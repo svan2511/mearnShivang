@@ -11,7 +11,19 @@
     ],
     "routes": [
         {
-          "src": "/(.*)",
+          "src": "/admin/(.*)",
+          "dest": "index.js"
+        },
+        {
+          "src": "/products/(.*)",
+          "dest": "index.js"
+        },
+        {
+          "src": "/centers/(.*)",
+          "dest": "index.js"
+        },
+        {
+          "src": "/members/(.*)",
           "dest": "index.js"
         }
       ]
