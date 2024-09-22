@@ -17,7 +17,7 @@ mongoose.connect("mongodb+srv://ameetsikwal:amitkumarsikwal@cluster0.hfhsf.mongo
 
 server.use(cors());
 server.use(express.json());
-server.use(express.static(path.resolve(__dirname , 'uploads')));
+server.use(express.static(path.resolve(__dirname , 'build')));
 
 
 server.use('/admin',adminRouter.router);
@@ -25,7 +25,7 @@ server.use('/products',productRouter.router);
 server.use('/centers',centerRouter.router);
 server.use('/members',memberRouter.router);
 server.use('*' ,(req,res)=>{
-res.sendFile( path.resolve(__dirname ,'uploads','index.html' ));
+res.sendFile( path.resolve(__dirname ,'build','index.html' ));
 })
 
 

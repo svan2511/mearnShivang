@@ -11,7 +11,7 @@ npm-debug.log*
 
 # Build directories
 dist/
-build/
+
 coverage/
 
 # Dependency directories
