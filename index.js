@@ -7,10 +7,11 @@ const adminRouter = require('./routes/admin');
 const centerRouter = require('./routes/center');
 const memberRouter = require('./routes/member');
 const cors = require('cors');
+require('dotenv').config();
 
 
 
-mongoose.connect("mongodb+srv://ameetsikwal:amitkumarsikwal@cluster0.hfhsf.mongodb.net/shivang?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(process.env.MONGO_URL)
 .then(async () => console.log('server started ...'))
 .catch((e) => console.log('message: ', e.message));
 
@@ -29,6 +30,6 @@ res.sendFile( path.resolve(__dirname ,'build','index.html' ));
 })
 
 
-server.listen(8080 , () => {
+server.listen(process.env.PORT , () => {
     console.log('server start ...')
 })
