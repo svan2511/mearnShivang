@@ -10,7 +10,7 @@ const cors = require('cors');
 
 
 
-mongoose.connect("mongodb://localhost:27017/shivang")
+mongoose.connect("mongodb+srv://ameetsikwal:amitkumarsikwal@cluster0.hfhsf.mongodb.net/shivang?retryWrites=true&w=majority&appName=Cluster0")
 .then(async () => console.log('server started ...'))
 .catch((e) => console.log('message: ', e.message));
 
