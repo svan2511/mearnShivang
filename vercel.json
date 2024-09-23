@@ -15,7 +15,7 @@
           "dest": "index.js"
         },
         {
-          "src": "/products/(.*)",
+          "src": "/centers",
           "dest": "index.js"
         },
         {
@@ -23,8 +23,20 @@
           "dest": "index.js"
         },
         {
+          "src": "/members",
+          "dest": "index.js"
+        },
+        {
           "src": "/members/(.*)",
           "dest": "index.js"
+        },
+        {
+          "src": "/",
+          "dest": "build/index.html"
+        },
+        {
+          "src": "/(.+)",
+          "dest": "build/$1"
         }
       ]
    

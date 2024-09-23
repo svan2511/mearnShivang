@@ -2,7 +2,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const server = express();
-const productRouter = require('./routes/product');
 const adminRouter = require('./routes/admin');
 const centerRouter = require('./routes/center');
 const memberRouter = require('./routes/member');
@@ -22,7 +21,6 @@ server.use(express.static(path.resolve(__dirname , 'build')));
 
 
 server.use('/admin',adminRouter.router);
-server.use('/products',productRouter.router);
 server.use('/centers',centerRouter.router);
 server.use('/members',memberRouter.router);
 server.use('*' ,(req,res)=>{
