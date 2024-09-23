@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URL)
 server.use(cors());
 server.use(express.json());
 server.use(express.static(path.resolve(__dirname , 'build')));
+server.use(express.static(path.resolve(__dirname , 'images')));
 
 
 server.use('/admin',adminRouter.router);
