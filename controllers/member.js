@@ -67,9 +67,8 @@ exports.getMemeberByName = async (req,res) => {
 }
 
 exports.create = async (req,res) => {
-
-    const url = req.protocol+'://'+req.get('host')+'/'+req.file.filename;
     try{
+        const url = req.protocol+'://'+req.get('host')+'/'+req.file.filename;
         const member = new Member({
             mem_name:req.body.mem_name,
             mem_img: url,
