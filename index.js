@@ -21,9 +21,9 @@ server.use(express.static(path.resolve(__dirname , 'build')));
 server.use(express.static(path.resolve(__dirname , 'images')));
 
 
-server.use('/admin',adminRouter.router);
-server.use('/centers',centerRouter.router);
-server.use('/members',memberRouter.router);
+server.use('/api/admin',adminRouter.router);
+server.use('/api/centers',centerRouter.router);
+server.use('/api/members',memberRouter.router);
 server.use('*' ,(req,res)=>{
 res.sendFile( path.resolve(__dirname ,'build','index.html' ));
 })
