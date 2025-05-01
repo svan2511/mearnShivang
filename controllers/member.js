@@ -68,7 +68,13 @@ exports.getMemeberByName = async (req,res) => {
 
 exports.create = async (req,res) => {
     try{
-        const url = req.protocol+'://'+req.get('host')+'/'+req.file.filename;
+        // Get the base URL based on environment
+        const baseUrl = process.env.NODE_ENV === 'production' 
+            ? 'http://localhost:8080/images'  // Production URL
+            : req.protocol + '://' + req.get('host') + '/images';  // Development URL
+
+        const url = baseUrl + '/' + req.file.filename;
+        
         const member = new Member({
             mem_name:req.body.mem_name,
             mem_img: url,
@@ -97,6 +103,7 @@ exports.create = async (req,res) => {
         res.json({success : true , message:"Create Successfully" , member:data});
 
     }catch(e) {
+        console.error('Error in member creation:', e);
         res.json({success : false , message:e.message});
     }
     
