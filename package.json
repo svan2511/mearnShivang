@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "shivang-micro-finance",
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
@@ -28,7 +28,7 @@
   },
   "build": {
     "appId": "com.yourcompany.nodejs",
-    "productName": "Shivang Micro Finance Portal",
+    "productName": "Shivang Micro Finance",
     "directories": {
       "output": "dist"
     },
@@ -52,15 +52,15 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "build/shiv-logo.png"
+      "icon": "build/logo.png"
     },
     "mac": {
       "target": "dmg",
-      "icon": "build/shiv-logo.png"
+      "icon": "build/logo.png"
     },
     "linux": {
       "target": "AppImage",
-      "icon": "build/shiv-logo.png"
+      "icon": "build/logo.png"
     },
     "nsis": {
       "oneClick": false,
