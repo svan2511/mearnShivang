@@ -1,11 +1,13 @@
 {
-  "name": "nodejs",
+  "name": "shivang-micro-finance",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "electron .",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "electron-builder",
+    "pack": "electron-builder --dir"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +21,52 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.6.2",
     "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "electron": "^28.1.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.yourcompany.nodejs",
+    "productName": "Shivang Micro Finance",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      ".env"
+    ],
+    "extraResources": [
+      {
+        "from": ".env",
+        "to": ".env",
+        "filter": ["**/*"]
+      },
+      {
+        "from": "images",
+        "to": "images",
+        "filter": ["**/*"]
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/logo.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/logo.png"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "build/logo.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
   }
 }
