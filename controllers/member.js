@@ -178,9 +178,15 @@ exports.deleteData = async (req,res) => {
 }
 
 exports.updateInstallment = async (req,res) => {
+
+    //res.json({success : false , message:req.body});
+   
     const instDate = req.body.disb_date ? new Date(req.body.disb_date) : new Date();
+    const memberId = req.body.member_id;
     let updatedata;
   try{
+    const instNum = parseInt(req.body.inst_number) + 1;
+    console.log('number is ' ,instNum , parseInt(req.body.inst_number) ,req.body);
 
       if (req.body.paid_amount_single && req.body.paid_amount_single != 0 && req.body.remain_amount_single && req.body.remain_amount_single != 0) { 
 
@@ -191,6 +197,14 @@ exports.updateInstallment = async (req,res) => {
                       paid_on : instDate,
                       status : 2   // half payment done
                   }
+                  
+                
+                  let amountToAdd = req.body.remain_amount_single;
+                
+                      await Installment.updateOne(
+                        { inst_name: `INSTALLMENT_${instNum}`,member_id: memberId}, // Filter by inst_name
+                        { $inc: { inst_amount: amountToAdd } } // Increment inst_amount by amountToAdd
+                      );
       
       } else {
         if (req.body.remain_amount_single && req.body.remain_amount_single === +req.body.insst_amnt) { 
@@ -201,6 +215,13 @@ exports.updateInstallment = async (req,res) => {
                 paid_on : instDate,
                 status : 2   // half payment done
             }
+
+            let amountToAdd = req.body.remain_amount_single;
+                
+                      await Installment.updateOne(
+                        { inst_name: `INSTALLMENT_${instNum}`,member_id: memberId}, // Filter by inst_name
+                        { $inc: { inst_amount: amountToAdd } } // Increment inst_amount by amountToAdd
+                      );
         } else {
             updatedata = {
                 paid_amount : req.body.partialy_update ? req.body.partialy_update : req.body.insst_amnt,
@@ -208,11 +229,12 @@ exports.updateInstallment = async (req,res) => {
                 paid_on : instDate,
                 status : 1 // full payment done
             }
+
         }
            
       }
 
-      //console.log( req.body.inst_id , updatedata,'there....');
+      console.log( req.body.inst_id , updatedata,'there....');
 
       const installment = await Installment.findByIdAndUpdate(req.body.inst_id, updatedata, {
           new: true, // Return the updated document
