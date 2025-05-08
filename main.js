@@ -45,7 +45,7 @@ function createWindow() {
   mainWindow.loadURL('http://localhost:8080');
 
   // Open DevTools in development
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   // Add keyboard shortcut to toggle fullscreen (F11)
   mainWindow.webContents.on('before-input-event', (event, input) => {
