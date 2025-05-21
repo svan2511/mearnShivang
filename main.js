@@ -32,6 +32,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1200,
     height: 800,
+    icon: path.join(__dirname, 'build/logo.ico'),
     fullscreen: true, // Open in fullscreen
     webPreferences: {
       nodeIntegration: false,
@@ -45,7 +46,7 @@ function createWindow() {
   mainWindow.loadURL('http://localhost:8080');
 
   // Open DevTools in development
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   // Add keyboard shortcut to toggle fullscreen (F11)
   mainWindow.webContents.on('before-input-event', (event, input) => {

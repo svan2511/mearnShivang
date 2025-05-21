@@ -11,7 +11,7 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "This is Shivang Micro Finance Desktop Applicaton",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
@@ -52,7 +52,8 @@
     ],
     "win": {
       "target": "nsis",
-      "icon": "build/logo.png"
+      "icon": "build/logo.png",
+      "publisherName": "Anil Kumar Sikwal"
     },
     "mac": {
       "target": "dmg",
